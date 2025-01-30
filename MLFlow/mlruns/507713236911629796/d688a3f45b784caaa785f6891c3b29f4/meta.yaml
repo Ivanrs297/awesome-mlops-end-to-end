@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/507713236911629796/d688a3f45b784caaa785f6891c3b29f4/artifacts
+end_time: 1738196353130
+entry_point_name: ''
+experiment_id: '507713236911629796'
+lifecycle_stage: active
+run_id: d688a3f45b784caaa785f6891c3b29f4
+run_name: linear_regression_retrain_20250129_181907
+run_uuid: d688a3f45b784caaa785f6891c3b29f4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1738196347867
+status: 3
+tags: []
+user_id: ivanr
