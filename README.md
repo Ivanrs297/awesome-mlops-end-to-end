@@ -13,6 +13,103 @@ This project integrates:
 - **FastAPI** for real-time trip duration predictions.
 - **Automated retraining** when model performance degrades.
 
+## **📂 Project Structure**
+```
+.
+├───api
+│   ├───logs                  # Stores logs from API requests
+│   ├───saved_inputs          # Stores API input data for retraining
+│   │
+│   │   app.py                # FastAPI application
+│   │   README.md             # API documentation
+│   │   ss_api_test.JPG       # Screenshot of Postman test
+│
+├───configs
+│   │   model1.yaml           # Configuration file for model settings
+│
+├───data
+│   ├───external              # External data sources (if applicable)
+│   ├───interim               # Intermediate processed data
+│   ├───processed
+│   │   ├───2024              # Processed dataset for training
+│   │   │   combined_2024.csv  # Combined processed data
+│   │   │   test.csv          # Test dataset
+│   │   │   train.csv         # Training dataset
+│   │
+│   └───raw
+│       ├───2024              # Raw dataset from Mi Bici 2024
+│       │   datos_abiertos_2024_01.csv
+│       │   datos_abiertos_2024_02.csv
+│       │   datos_abiertos_2024_03.csv
+│       │   ...
+│       │   datos_abiertos_2024_12.csv
+│       │
+│       │   nomenclatura_2024_12.csv  # Data dictionary
+│
+├───docs                      # Project documentation
+│
+├───MLFlow
+│   ├───mlartifacts           # Stores MLflow artifacts
+│   ├───mlruns                # MLflow experiment tracking
+│   │
+│   │   infer.py              # Model inference script
+│   │   README.md             # MLflow documentation
+│   │   requirements.txt      # Dependencies for MLflow
+│   │   retrain_model.py      # Automated retraining script
+│   │   ss_mlfow_dashboard.JPG # Screenshot of MLflow dashboard
+│   │   train.py              # Model training script
+│
+├───models
+│   │   lr_mae-286.9239_2025-01-29.pkl  # Latest linear regression model
+│   │   random_forest_mae-273.4929_2025-01-29.pkl  # Latest random forest model
+│
+├───notebooks
+│   │   1.IRA_data_preprocessing.ipynb   # Data cleaning notebook
+│   │   2.IRA_data_vizualization.ipynb   # Exploratory Data Analysis (EDA)
+│   │   3.IRA_modeling.ipynb             # Model training and evaluation
+│   │   4.IRA_retraining.ipynb           # Model retraining analysis
+│
+├───references                 # References and additional documentation
+│
+├───reports
+│   ├───figures
+│   │   umap_2d_K3.png        # Visualization of UMAP embeddings
+│
+└───src
+    ├───data
+    │   │   build_features.py # Feature engineering
+    │   │   cleaning.py       # Data cleaning functions
+    │   │   ingestion.py      # Data loading
+    │   │   labeling.py       # Labeling for supervised learning
+    │   │   splitting.py      # Train-test split
+    │   │   validation.py     # Data validation
+    │
+    ├───models
+    │   ├───model1
+    │   │   │   dataloader.py  # Loads data for training
+    │   │   │   hyperparameters_tuning.py # Hyperparameter tuning
+    │   │   │   model.py       # Model definition
+    │   │   │   predict.py     # Inference script
+    │   │   │   preprocessing.py # Preprocessing functions
+    │   │   │   train.py       # Training script
+    │
+    ├───visualization
+    │   │   evaluation.py     # Model evaluation scripts
+    │   │   exploration.py    # Data exploration and visualization
+    │
+    │   __init__.py
+
+.env  
+.gitignore  
+LICENSE  
+Makefile  
+README.md  
+requirements.txt  
+```
+
+---
+
+
 ### **1️⃣ Model Training & Logging (MLflow)**
 - Uses **Linear Regression** to predict trip durations.
 - Trained on **2024 Mi Bici data**.
@@ -130,6 +227,9 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 mlflow ui
 ```
 Check **experiment logs & model versions** at **`http://127.0.0.1:5000`**.
+
+![MLflow Dashboard](https://raw.githubusercontent.com/Ivanrs297/mlops-end-to-end-mibici/refs/heads/main/MLFlow/ss_mlfow_dashboard.JPG)
+
 
 ### **6️⃣ Schedule Automated Retraining**
 Schedule `retrain_model.py` to **run daily** (or as needed) using:

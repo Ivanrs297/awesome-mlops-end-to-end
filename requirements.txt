@@ -1,1 +1,8 @@
-
+fastapi
+uvicorn
+mlflow
+pandas
+numpy
+scikit-learn
+joblib
+psycopg2
