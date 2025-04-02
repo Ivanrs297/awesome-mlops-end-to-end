@@ -1,2 +1,3 @@
-Year_of_Birth,Gender,Origin_Id,Destination_Id,Start_Hour,Start_DayOfWeek,Prediction,Timestamp
-1996.0,0,11,50,15,6,626.6196656530456,2025-04-02 03:18:43
+version https://git-lfs.github.com/spec/v1
+oid sha256:35f6a0c17c8ecd1151f73fd56fe19bef3537cd9f509282d3f6be798ae4979748
+size 154
