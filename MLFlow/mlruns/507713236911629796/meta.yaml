@@ -1,6 +1,0 @@
-artifact_location: mlflow-artifacts:/507713236911629796
-creation_time: 1738167821945
-experiment_id: '507713236911629796'
-last_update_time: 1738167821945
-lifecycle_stage: active
-name: trip_duration_prediction

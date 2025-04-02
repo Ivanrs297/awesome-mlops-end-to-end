@@ -1,8 +1,8 @@
-fastapi
-uvicorn
-mlflow
-pandas
-numpy
-scikit-learn
-joblib
-psycopg2
+fastapi==0.115.12
+mlflow==2.21.2
+pandas==2.2.3
+scikit-learn==1.6.1
+numpy==2.2.4
+joblib==1.4.2
+uvicorn==0.34.0
+psycopg2==2.9.10

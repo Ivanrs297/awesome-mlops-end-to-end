@@ -2,7 +2,7 @@
 FROM python:3.10
 
 # Set working directory
-WORKDIR /app
+WORKDIR /
 
 # Copy project files
 COPY . .
@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r MLFlow/requirements.txt
 EXPOSE 8000
 
 # Start FastAPI server
-CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000"]

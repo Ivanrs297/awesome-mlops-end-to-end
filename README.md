@@ -185,13 +185,14 @@ pip install -r requirements.txt
 
 ### **2️⃣ Train & Log the Model**
 ```bash
-python scripts/train.py
+mlflow ui
+python MLFlow/train.py
 ```
 This will train the model using **Mi Bici 2024 data** and log it in MLflow.
 
 ### **3️⃣ Run the FastAPI Server**
 ```bash
-uvicorn scripts.api:app --host 0.0.0.0 --port 8000 --reload
+uvicorn api.app:app --host 0.0.0.0 --port 8000
 ```
 The API will be available at **`http://127.0.0.1:8000`**.
 
@@ -231,19 +232,5 @@ Check **experiment logs & model versions** at **`http://127.0.0.1:5000`**.
 ![MLflow Dashboard](https://raw.githubusercontent.com/Ivanrs297/mlops-end-to-end-mibici/refs/heads/main/MLFlow/ss_mlfow_dashboard.JPG)
 
 
-### **6️⃣ Schedule Automated Retraining**
-Schedule `retrain_model.py` to **run daily** (or as needed) using:
-- **Linux (Cron Job)**
-  ```bash
-  crontab -e
-  ```
-  Add:
-  ```bash
-  0 */12 * * * /usr/bin/python3 /path/to/retrain_model.py
-  ```
-- **Windows (Task Scheduler)**
-  - Set **Trigger:** Run **every 12 hours**.
-  - Set **Action:** Run:
-    ```powershell
-    python C:\path\to\retrain_model.py
-    ```
+### **6️⃣ Retraining**
+Run `retrain_model.py` and promote model in MLFlow UI

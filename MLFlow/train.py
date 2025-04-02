@@ -10,7 +10,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from mlflow.models import infer_signature  # For schema inference
+import warnings
+import os
 
+warnings.filterwarnings("ignore")
 
 # Generate timestamp
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -56,6 +59,9 @@ lr_pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
     ('regressor', LinearRegression())
 ])
+
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI","http://127.0.0.1:5000/") 
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
 # Set MLflow experiment
 mlflow.set_experiment("trip_duration_prediction")
